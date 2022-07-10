@@ -50,18 +50,23 @@ namespace QuickSort {
         //  for j = p to r - 1
         //      if A[j] <= x
         //          i = i + 1
+        //          exchange A[i] with A[j]
         //exchange A[i + 1] with A[r]
         //return i + 1
 
         public static int Partition(int[] integerArray, int lowIndex, int highIndex) {
-            int x = integerArray[highIndex];
+            int pivot = integerArray[highIndex];
             int i = lowIndex - 1;
+            int temp;
             for (int j = lowIndex; j < highIndex; j++) {
-                if (integerArray[j] <= x) {
+                if (integerArray[j] <= pivot) {
                     i++;
+                    temp = integerArray[i];
+                    integerArray[i] = integerArray[j];
+                    integerArray[j] = temp;
                 }
             }
-            int temp = integerArray[i + 1];
+            temp = integerArray[i + 1];
             integerArray[i + 1] = integerArray[highIndex];
             integerArray[highIndex] = temp;
 
